@@ -12,6 +12,10 @@ func main01() {
 	myMap["chinese"] = 100
 	myMap["engilsh"] = 88
 	userInfo := map[string]string{"userName": "lisi", "age": "26"}
+	userInfo["S"] = "bsb"
+	userInfo["b"] = "bsb"
+	userInfo["A"] = "bsb"
+	userInfo["a"] = "bsb"
 	fmt.Println(myMap)    //map[chinese:100 engilsh:88 math:99]
 	fmt.Println(userInfo) //map[age:26 userName:lisi]
 }
@@ -56,6 +60,9 @@ func main03() {
 	} else {
 		fmt.Println("not in key in map")
 	}
+	fmt.Println("------------")
+	i, b := m["xasxasxsa"]
+	fmt.Println(i, b)
 }
 
 func main04() {
@@ -77,7 +84,7 @@ func main04() {
 	}
 }
 
-// method
+// method, map作为参数是值传递
 func main05() {
 	main02()
 	fmt.Println("")
@@ -101,7 +108,7 @@ func changeM(m map[int64]int64) {
 	fmt.Printf("m 在函数返回前地址是：%p\n", m)
 
 }
-func main() {
+func main06() {
 	fmt.Println("")
 	str := "how do you do"
 	s := strings.Split(str, " ")
@@ -116,4 +123,64 @@ func main() {
 		}
 	}
 	fmt.Println(m)
+}
+
+/**
+返回切片中指定字符串出现的索引
+*/
+func index(str []string, target string) int {
+	for i, v := range str {
+		if v == target {
+			return i
+		}
+	}
+	return -1
+}
+
+/**
+判断字符串切片是否包含指定字符串
+*/
+func include(str []string, s string) bool {
+	return index(str, s) >= 0
+}
+
+func filter(ws []string, f func(string) bool) bool {
+	for _, v := range ws {
+		if f(v) {
+			return true
+		}
+	}
+	return false
+}
+
+func every(nums []int, f func(int) bool) bool {
+	for _, v := range nums {
+		if !f(v) {
+			return false
+		}
+	}
+	return true
+}
+
+func main() {
+	strSlice := []string{"a", "b", "c", "QS"}
+	fmt.Println(index(strSlice, "b"))
+	fmt.Println(include(strSlice, "f"))
+	ret := filter(strSlice, func(s string) bool {
+		if s == "QSS" {
+			return true
+		} else {
+			return false
+		}
+	})
+	fmt.Println(ret)
+	nums := []int{1, 2, 3, 4, 5, 6, 7}
+	ret2 := every(nums, func(i int) bool {
+		if i > 1 {
+			return true
+		} else {
+			return false
+		}
+	})
+	fmt.Println(ret2)
 }

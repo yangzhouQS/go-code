@@ -2,15 +2,17 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main2() {
-	// 字符串字面量使用双引号（＂）或者反引号（＇）来创建。
+	// 字符串字面量使用双引号（""）或者反引号（``）来创建。
 	str := "hello golang string \"sss\" "
-	str2 := `hello "word" with's`
+	str2 := `hello "word" with's
+			可以换行
+		`
 	fmt.Println(str)  // hello golang string "sss"
 	fmt.Println(str2) // hello "word" with's
-
 }
 func main3() {
 	str := "hello golang string "
@@ -38,7 +40,7 @@ func main4() {
 	*/
 }
 
-func main() {
+func main5() {
 	//	字符和字符串
 
 	// 字符切片转换为字符串
@@ -65,4 +67,21 @@ func main() {
 		}
 	}
 	fmt.Print(buffer.String(),"\n")*/
+}
+
+// https://studygolang.com/articles/5769
+func main() {
+	str := "hello你好abc"
+	fmt.Println("包含:", strings.Contains(str, "ab"))
+	fmt.Println("开头:", strings.HasPrefix(str, "he"))
+	fmt.Println("结尾:", strings.HasSuffix(str, "abc"))
+	fmt.Println("长度:", len(str))
+	fmt.Println("包含任一字符:", strings.ContainsAny(str, "def"))
+	fmt.Println(strings.Contains(str, "")) // true
+	fmt.Println("是否包含字符:", strings.ContainsRune(str, 'a'))
+	fmt.Println("是否包含字符:", strings.ContainsRune(str, 'd'))
+	fmt.Println("index首次出现索引:", strings.Index(str, "l"))
+	fmt.Println("index首次出现索引:", strings.Index(str, "h")) // 0
+	fmt.Println("index首次出现索引:", strings.Index(str, ""))  // 0
+	fmt.Println("返回字符在字符串:", strings.IndexRune(str, 'a'))
 }
