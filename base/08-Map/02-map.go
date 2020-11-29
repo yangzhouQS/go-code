@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	var m1 map[string]int         // panic: assignment to entry in nil map
 	fmt.Println(m1 == nil)        // 内存中没有分配内存空间
-	m1 = make(map[string]int, 10) // 使用make分配内存空间出是哈u初始化
+	m1 = make(map[string]int, 10) // 使用make分配内存空间初始化
 	m1["a"] = 100
 	m1["b"] = 99
 	fmt.Println(m1)

@@ -17,7 +17,9 @@ func sum(a, b int) (plus int) {
 }
 
 //可变参数
+//可变参数的类型是对应的切片类型
 func plus(a int, args ...int) (sum int) {
+	fmt.Printf("%T \n", args) // []int
 	sum = a
 	if len(args) > 0 {
 		for _, v := range args {
@@ -25,6 +27,9 @@ func plus(a int, args ...int) (sum int) {
 		}
 	}
 	return
+}
+func main() {
+	plus(1, 2, 3, 4, 5)
 }
 func main02() {
 	fmt.Println(sum(1, 5))
@@ -44,7 +49,7 @@ func calc() (a int, sum int) {
 	a = 99
 	return
 }
-func main() {
+func main111() {
 	//多返回值
 	a, b := test2()
 	fmt.Println(a, b)   // hello word 100
